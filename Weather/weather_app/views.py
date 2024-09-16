@@ -34,7 +34,7 @@ def weather_home(request):
             form = SearchForm()
     else:
         form = SearchForm()
-    print(alert)
+        
     context = {
         'weather_data': weather_data,
         'avg_temp': avg_temp,
@@ -42,5 +42,4 @@ def weather_home(request):
         'alert': alert,
         'form': form,  
     }
-    print(context)
     return render(request, 'home.html', context)
