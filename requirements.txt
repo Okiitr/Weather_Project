@@ -1,4 +1,5 @@
 Django
+gunicorn
 django-environ
 requests
 python-decouple
