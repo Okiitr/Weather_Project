@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Report</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5 pt-5 pb-5 ">
+        <h1>Weather Report</h1></br>
+        <form method="POST" class="form-inline my-2 my-lg-0">
+            {% csrf_token %}
+            
+            {{ form.city }}  <!-- Renders the city input field from the form -->
+            <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+        </form></br>
+
+        {% if weather_data %}
+        <h2 style="color:blue">City: {{ weather_data.city }}</h2>
+
+        <p>Temperature: {{ weather_data.temperature }}°C</p>
+        <p>Humidity: {{ weather_data.humidity }}%</p>
+        <p>Condition: {{ weather_data.condition }}</p>
+        <p>Wind Speed: {{ weather_data.wind_speed }} kph</p>
+        {% endif %}
+
+        {% if avg_temp %}
+        <h3 style="color:green">Trends (Last 24 Hours):</h3>
+        <p>Average Temperature: {{ avg_temp }}°C</p>
+        <p>Average Humidity: {{ avg_humidity }}%</p>
+        {% endif %}
+
+        {% if alert %}
+        <h2 style="color:red">{{ alert }}</h2>
+        {% endif %}
+       
+    </div>
+</body>
+</html>
